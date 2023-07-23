@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "settings": {
+        "class": "banner-index",
+        "image": "shopify:\/\/shop_images\/Hero_Image.jpg",
+        "image_2": "shopify:\/\/shop_images\/image_1_1.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "bdfb2c81-c10e-4dff-8b58-d72f8f96b036": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19282440126760__bdfb2c81-c10e-4dff-8b58-d72f8f96b036-16860700044c58a526-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Indigo studios STARGAZE MOCHA LOW",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--19282440126760__bdfb2c81-c10e-4dff-8b58-d72f8f96b036-16860700044c58a526-2"
+      ],
+      "custom_css": [
+        ".rich-text__buttons {display: flex;}"
+      ],
+      "settings": {
+        "class": "home-rich-text",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "bdfb2c81-c10e-4dff-8b58-d72f8f96b036"
+  ]
+}

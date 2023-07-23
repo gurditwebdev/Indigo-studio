@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-header",
+      "blocks": {
+        "2e250082-97ca-41da-907e-e70685a45296": {
+          "type": "Item",
+          "settings": {
+            "title": "<p><a href=\"\/pages\/accessibility\" title=\"ACCESSIBILITY\">ACCESSIBILITY<\/a><\/p>"
+          }
+        },
+        "d2659e93-e993-4f17-9e84-709d99c4320d": {
+          "type": "Item",
+          "settings": {
+            "title": "<p><a href=\"\/pages\/terms-of-sale\" title=\"TERMS OF SALE\">TERMS OF SALE<\/a><\/p>"
+          }
+        },
+        "392c8523-6f0c-473b-85b2-1decf78f0f54": {
+          "type": "Item",
+          "settings": {
+            "title": "<p><a href=\"\/pages\/privacy-policy\" title=\"PRIVACY POLICY\">PRIVACY POLICY<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "2e250082-97ca-41da-907e-e70685a45296",
+        "d2659e93-e993-4f17-9e84-709d99c4320d",
+        "392c8523-6f0c-473b-85b2-1decf78f0f54"
+      ],
+      "settings": {
+        "title": "Legal"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

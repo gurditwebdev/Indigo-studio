@@ -1,0 +1,54 @@
+{% style %}
+.spring-0000-parent-bg {
+    background: #FAFAFA;
+}
+
+.spring-0000-parent {
+    gap: 24px;
+}
+{% endstyle %}
+  <div class="desktop-sub-menu-parent">
+      <div class="desktop-sub-menu">
+        <div class="desktop-sub-menu-inner page-width">
+          <div class="frame-wrapper">
+            <div class="all-achieve-collections-wrapper">
+              <div class="all-achieve-collections colorB upcase pt-16 pb-16 display-xs-Regular">{{ page.title }}</div>
+            </div>
+          </div>
+        </div>
+           <div class="spring-0000-parent-bg">
+        <div class="spring-0000-parent page-width d-flex alignCenter">
+    {% for block in section.blocks %}
+          <div class="spring-0000  colorG8 upcase pt-16 pb-16 display-xs-Regular" data-tab="{{ block.settings.title  }}">{{ block.settings.title  }}</div>
+      {% endfor %}
+        </div>
+           </div>
+      </div>
+    </div>
+
+{% schema %}
+{
+  "name": "Archive Header",
+  "settings": [],
+  "blocks":[
+      {
+        "type":"Item",
+        "name":"Item",
+        "settings":[     
+           {
+        "id":"title",
+        "type":"text",
+        "label":"Title"
+      }
+   
+        ]
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

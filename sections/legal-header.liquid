@@ -1,0 +1,141 @@
+{% style %}
+.spring-0000-parent-bg {
+    background: #FAFAFA;
+}
+.spring-0000-parent-bg a {
+    text-decoration: none;
+    color: #7d7d7d;
+}
+.spring-0000-parent {
+    gap: 24px;
+}
+.page-content-legal{
+ max-width:783px;
+  margin:0 auto;
+}
+  .content-rte {
+    margin: 26px  0 0;
+}
+.content-rte p br{
+    display:block;
+}
+.content-rte strong {
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: block;
+    margin: 25px  0 16px;
+    padding-top: 25px;
+}
+.content-rte p{
+    color:#7d7d7d;
+}
+.content-rte strong ~ strong{
+border-top:1px solid #070707;
+}
+
+
+.page-content-legal {
+    padding: 52px  0 113px;
+}
+
+.content-rte strong:first-child {
+    padding-top: 0;
+}
+.spring-0000-parent-bg .active-link {
+    text-decoration-line: underline;
+    color: #070707;
+}
+.content-rte ol {
+    margin: 0;
+    padding: 0 0 0 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.content-rte ol +  strong {
+    margin-top: 23px;
+}
+.content10 {
+    max-height: 150px;
+    overflow: auto;
+}
+
+
+.content10::-webkit-scrollbar {
+  width: 3px;
+    border-radius:3px;
+}
+
+.content10::-webkit-scrollbar-track {
+background: #D0D0D0;
+    border-radius:3px;
+}
+
+.content10::-webkit-scrollbar-thumb {
+  background: #070707;
+    border-radius:3px;
+}
+
+.content10::-webkit-scrollbar-thumb:hover {
+  background: #070707;
+    border-radius:3px;
+}
+{% endstyle %}
+  <div class="desktop-sub-menu-parent">
+      <div class="desktop-sub-menu">
+        <div class="desktop-sub-menu-inner page-width">
+          <div class="frame-wrapper">
+            <div class="all-achieve-collections-wrapper">
+              <div class="all-achieve-collections colorB upcase pt-16 pb-16 display-xs-Regular">{{ section.settings.title }}</div>
+            </div>
+          </div>
+        </div>
+           <div class="spring-0000-parent-bg">
+        <div class="spring-0000-parent page-width d-flex alignCenter">
+    {% for block in section.blocks %}
+          <div class="spring-0000  colorG8 upcase pt-16 pb-16 display-xs-Regular">{{ block.settings.title  }}</div>
+      {% endfor %}
+        </div>
+           </div>
+      </div>
+    </div>
+<div class="page-content-legal">
+   <div class="all-achieve-collections colorB  pb-24 display-sm-Medium">{{ section.settings.title }}</div>
+<div class="all-achieve-collections colorB upcase display-md-Medium">{{page.title }}</div>
+  <div class="content-rte colorB display-xs-Regular">
+{{ page.content }}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Archive Header",
+  "settings": [
+      {
+        "id":"title",
+        "type":"text",
+        "label":"Title"
+      }    
+  ],
+  "blocks":[
+      {
+        "type":"Item",
+        "name":"Item",
+        "settings":[     
+           {
+        "id":"title",
+        "type":"richtext",
+        "label":"Title"
+      }
+   
+        ]
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

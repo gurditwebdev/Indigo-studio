@@ -1,0 +1,370 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .placeholder-image {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.gbp,
+.stargaze-mocha-low {
+  align-self: stretch;
+  position: relative;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+.gbp {
+  font-weight: 500;
+}
+.stargaze-mocha-low-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+
+
+
+.group-parent {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0 var(--padding-45xl);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: var(--display-sm-medium-allcaps-size);
+  color: var(--monotones-black);
+  font-family: var(--display-sm-medium-allcaps);
+}
+
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+{% assign title = collection.title %}
+<div class="page-width">
+<div class="filter-and-heading d-flex alignCenter justifySB">
+ <h1 class="collection-hero__title  upcase colorB display-xs-Regular pt-16 pb-16 m0">
+        {{- collection.title | escape -}}
+      </h1>
+  <button type="button" class="filter-btn display-xs-Regular pt-16 pb-16 m0 upcase colorB">
+{{ section.settings.filter }}
+</button>
+
+</div>
+
+
+</div>
+
+
+  <div class="new-in-parent mb-48">
+
+{% for collection in collections %}
+{% unless collection.title == title %}
+     <div class="new-in"><a class="decoration-none upcase colorB" href="{{ collection.url }}">{{ collection.title  }}</a></div>
+    {% endunless %}
+{% endfor %}
+ 
+    </div>
+<div class="hidden collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner page-width">
+    <div class="collection-hero__text-wrapper">
+      <h1 class="collection-hero__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container media gradient">
+        <img
+          srcset="
+            {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
+            {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
+            {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+            {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {{ collection.image | image_url }} {{ collection.image.width }}w
+          "
+          src="{{ collection.image | image_url: width: 750 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+          alt=""
+          width="{{ collection.image.width }}"
+          height="{{ collection.image.height }}"
+        >
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+<div class="filter-collections ">
+ <div class="desktop-filter-menu-parent">
+      <div class="desktop-filter-menu">
+        <div class="frame-parent">
+          <div class="filter-parent">
+            <div class="filter">FILTER</div>
+            <img
+              class="heroicons-solidx-mark"
+              alt=""
+              src="https://cdn.shopify.com/s/files/1/0769/8936/6568/files/x-mark.png?v=1686973715"
+            />
+          </div>
+          <div class="frame-wrapper">
+            <div class="frame-container">
+              <div class="frame-container">
+                <div class="frame-group">
+                  <div class="frame-wrapper1">
+                    <div class="line-parent">
+                      <div class="frame-child"></div>
+                      <div class="frame-parent1 active_tab">
+                        <div class="category-wrapper">
+                          <div class="category">CATEGORY</div>
+                        </div>
+                        <img
+                          class="heroicons-solidplus"
+                          alt=""
+                          src="https://cdn.shopify.com/s/files/1/0769/8936/6568/files/plus.png?v=1686973789"
+                        />
+                      </div>
+                      <div class="content">
+{% assign title = collection.title %}
+{% for collection in collections %}
+
+    <div class="frame-container {% if collection.title == title %}collection-filters-apply{% endif %}">
+                          <div class="shoes">
+<a class="decoration-none upcase colorG8" href="{{ collection.url }}">{{ collection.title  }}</a>                            
+                          </div>
+                        </div>
+    
+{% endfor %}
+                    </div>
+                        <div class="frame-item">&nbsp;</div>
+                  </div>
+                  </div>
+                  <div class="frame-wrapper1">
+                    <div class="line-parent">
+                      <div class="frame-child"></div>
+                      <div class="frame-parent1 active_tab">
+                        <div class="category-wrapper">
+                          <div class="category">SORT BY</div>
+                        </div>
+                        <img
+                          class="heroicons-solidplus"
+                          alt=""
+                          src="https://cdn.shopify.com/s/files/1/0769/8936/6568/files/plus.png?v=1686973789"
+                        />
+                      </div>
+                      <div class="content sort-filter-by">
+                        
+                          <facet-filters-form class="hidden facets facets-vertical-sort page-width">
+        <form class="facets-vertical-form" id="FacetSortForm">
+          <div class="facet-filters sorting caption">
+            <div class="facet-filters__field">
+              <h2 class="facet-filters__label caption-large text-body">
+                <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+              </h2>
+              <div class="select">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <select
+                  name="sort_by"
+                  class="facet-filters__sort select__select caption-large"
+                  id="SortBy"
+                  aria-describedby="a11y-refresh-page-message"
+                >
+                  {%- for option in collection.sort_options -%}
+                    <option
+                      value="{{ option.value | escape }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name | escape }}
+                    </option>
+                  {%- endfor -%}
+  <option
+                      value="sold-out"                 
+                    >
+                      HIDE SOLD OUT PRODUCTS
+                    </option>
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+            </div>
+            <noscript>
+              <button type="submit" class="facets__button-no-js button button--secondary">
+                {{ 'products.facets.sort_button' | t }}
+              </button>
+            </noscript>
+          </div>
+        </form>
+      </facet-filters-form>
+   {%- for option in collection.sort_options -%}
+     {% if option.name == 'Featured' %}
+        <div class="frame-container">
+                          <div class="shoes" data-value="manual" data-option="{{ option.name | escape }}">FEATURED </div>
+                        </div>
+{% endif %}
+
+     {% if option.name == 'Date, new to old' %}
+        <div class="frame-container">
+                          <div class="shoes" data-value="created-descending" data-option="{{ option.name | escape }}">NEWEST</div>
+                        </div>
+{% endif %}
+
+
+       {%- endfor -%}
+                          <div class="frame-container">
+                          <div class="shoes" data-value="sold-out" data-option="HIDE SOLD OUT PRODUCTS">HIDE SOLD OUT PRODUCTS</div>
+                        </div>  
+                      </div>
+                       <div class="frame-item">&nbsp;</div>
+                    </div>
+                  </div>
+                  <div class="frame-wrapper1">
+                    <div class="line-parent">
+                      <div class="frame-child"></div>
+                      <div class="frame-parent1 active_tab">
+                        <div class="category-wrapper">
+                          <div class="category">SIZE</div>
+                        </div>
+                        <img
+                          class="heroicons-solidplus"
+                          alt=""
+                          src="https://cdn.shopify.com/s/files/1/0769/8936/6568/files/plus.png?v=1686973789"
+                        />
+                      </div>
+                      <div class="content10">
+                        <form class="filter-form content10">
+
+  {%- for filter in collection.filters -%}
+        {%- case filter.type -%}
+          {%- when 'boolean' or 'list' -%}
+     
+              {%- for filter_value in filter.values -%}
+
+                  <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                  <input type="checkbox"
+                    name="{{ filter_value.param_name }}"
+                    value="{{ filter_value.value }}"
+                    id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+class="hidden"
+                    {% if filter_value.active -%}checked{%- endif %}
+                    {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                  >
+   <div class="content11">
+                          <div class="shoes">{{ filter_value.label }}</div>
+                        </div>
+</label>
+{% if forloop.index == 1 %}
+<div class="filter_value_count" data-val="{{ filter.active_values.size }}"></div>
+{% endif %}
+              {%- endfor -%}
+
+{%- endcase -%}
+{%- endfor -%}
+
+                        </form>
+
+                      </div>
+                      <div class="frame-item">&nbsp;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-parent4">
+          <div class="frame-wrapper4">
+            <div class="frame-wrapper5 justifyCenter apply-filter-here">
+              <div class="apply-filter-wrapper">
+                <div class="apply-filter">APPLY FILTER</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-wrapper6">
+            <div class="frame-wrapper7 justifyCenter clear-filter-here">
+              <div class="apply-filter-wrapper ">
+                <div class="apply-filter">CLEAR FILTERS (<span>0</span>)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+ {
+      "type": "text",
+      "id": "filter",
+      "default": "FILTER BY",
+      "label": "Filter Heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    }
+  ]
+}
+{% endschema %}
